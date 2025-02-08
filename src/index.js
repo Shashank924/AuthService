@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const { PORT } = require('./config/serverConfig');
+const { User , Role } = require('./models/index');
+
 const apiRoutes = require('./routes/index');
 
 const setupAndStartServer = () => {

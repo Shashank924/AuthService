@@ -15,6 +15,22 @@ const authRequestValidator = async (req , res , next) => {
     next();
 }
 
+const isAdminRequestValidator = async (req , res , next) => {
+
+    if(
+        !req.body.id
+    ){
+        return res.status(400).json({
+            data : {},
+            success : false,
+            err : 'Something went wrong',
+            message : 'Not provided user Id',
+        });
+    }
+    next();
+}
+
 module.exports = {
     authRequestValidator,
+    isAdminRequestValidator
 }

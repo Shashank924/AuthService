@@ -2,6 +2,7 @@ const UserRepository = require('../repositories/userRepository');
 const jwt = require('jsonwebtoken');
 const { JWT_KEY } = require('../config/serverConfig');
 const bcrypt = require('bcrypt');
+const { Role } = require('../models/index');
 
 class UserService {
 
@@ -82,6 +83,16 @@ class UserService {
     checkPassword(plainPassword , encryptedPassword) {
         const response = bcrypt.compareSync(plainPassword , encryptedPassword);
         return response;
+    }
+
+    async isAdmin(userId) {
+
+        try {
+            return this.userRepositoryObj.isAdmin(userId);
+        } catch (error) {
+            console.log("Something went wrong at service layer");
+            throw error;
+        }
     }
 }
 
