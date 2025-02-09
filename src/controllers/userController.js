@@ -13,11 +13,12 @@ const create = async (req , res) => {
             err : {}
         });
     } catch (error) {
-        return res.status(500).json({
+        console.log(error);
+        return res.status(error.statusCode).json({
             data : {},
             success : false,
-            message : "Not able to create user",
-            err : error
+            message : error.message,
+            err : error.explanation
         });
     }
 }
@@ -33,11 +34,12 @@ const signIn = async (req , res) => {
             err : {}
         });
     } catch (error) {
-        return res.status(500).json({
+        console.log(error);
+        return res.status(400).json({
             data : {},
             success : false,
             message : "Not able to signIn",
-            err : error
+            err : error.explanation
         });
     }
 }
@@ -53,7 +55,7 @@ const isAuthenticated = async (req , res) => {
             err : {}
         });
     } catch (error) {
-        return res.status(500).json({
+        return res.status(error.statusCode).json({
             data : {},
             success : false,
             message : "Invalid Token",
@@ -73,7 +75,7 @@ const isAdmin = async (req , res) => {
             err : {}
         });
     } catch (error) {
-        return res.status(500).json({
+        return res.status(error.statusCode).json({
             data : {},
             success : false,
             message : "Something went wrong",

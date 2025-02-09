@@ -17,7 +17,7 @@ class UserService {
             return user;
         } catch (error) {
             console.log("Something went wrong at service layer");
-            throw {error};
+            throw error;
         }
     }
 
@@ -36,7 +36,7 @@ class UserService {
 
         } catch (error) {
             console.log("Something went wrong at service layer");
-            throw {error};
+            throw error;
         }
     }
 
@@ -54,7 +54,7 @@ class UserService {
 
         } catch (error) {
             console.log("Something went wrong at service layer");
-            throw {error};
+            throw error;
         }
     }
 
@@ -65,7 +65,7 @@ class UserService {
             return token;
         } catch (error) {
             console.log("Not able to create token");
-            throw {error};
+            throw error;
         }
     }
 
